@@ -1049,3 +1049,111 @@ The <math.h> header file contains functions to perform the arithmetic operations
 | cos(x) | Returns the cosine of the given number |
 | sin(x) | Returns the sine of the given number |
 | tan(x) | Returns the tangent of the given number |
+
+### strcmp()
+strcmp() is a standard library function in C that compares two strings. It returns an integer value:
+
+0 if the strings are equal.
+A positive value if the first non-matching character in str1 has a greater ASCII value than the corresponding character in str2.
+A negative value if the first non-matching character in str1 has a smaller ASCII value than the corresponding character in str2.
+
+```
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char str1[] = "Hello";
+    char str2[] = "World";
+
+    int result = strcmp(str1, str2);
+
+    if (result == 0) {
+        printf("The strings are equal.\n");
+    } else if (result < 0) {
+        printf("'%s' comes before '%s'.\n", str1, str2);
+    } else {
+        printf("'%s' comes after '%s'.\n", str1, str2);
+    }
+
+    return 0;
+}
+```
+In this example, strcmp is used to compare the strings "Hello" and "World." The program then prints a message based on the result of the comparison.
+
+### strcpy()
+
+The strcpy() function in C is used to copy the contents of one string into another. It takes two arguments: the destination string and the source string.
+
+```
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char source[] = "Hello, World!";
+    char destination[20]; // Make sure the destination has enough space
+
+    strcpy(destination, source);
+
+    printf("Source string: %s\n", source);
+    printf("Copied string: %s\n", destination);
+
+    return 0;
+}
+```
+In this example, the content of the source string ("Hello, World!") is copied to the destination string using strcpy(). It's important to ensure that the destination string has enough space to accommodate the source string, including the null terminator. In this case, destination is an array of size 20, which is sufficient for the given source string.
+
+Remember to be cautious when using strcpy() to prevent buffer overflows. If the destination string is not large enough, it can lead to undefined behavior. In practice, it's often safer to use strncpy() and ensure that you specify the maximum number of characters to copy.
+
+### strcat()
+
+Function in C is used to concatenate (append) the contents of one string to another. It appends the characters from the source string to the end of the destination string, and it is important to ensure that the destination string has enough space to accommodate the combined content.
+
+```
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char destination[50] = "Hello, ";
+    char source[] = "World!";
+
+    strcat(destination, source);
+
+    printf("Concatenated string: %s\n", destination);
+
+    return 0;
+}
+```
+In this example, the content of the source string ("World!") is concatenated to the end of the destination string ("Hello, "). The resulting string is then printed.
+
+It's crucial to ensure that the destination string has enough space to hold both the original content and the appended content, including the null terminator. Failure to allocate enough space can lead to undefined behavior or buffer overflows.
+
+Alternatively, you may use strncat() to specify the maximum number of characters to concatenate, providing an extra layer of safety.
+
+### strchr()
+
+Function in C is used to find the first occurrence of a specified character in a given string. It returns a pointer to the first occurrence of the character or a null pointer if the character is not found.
+
+```
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    const char *str = "Hello, World!";
+    char ch = 'o';
+
+    const char *result = strchr(str, ch);
+
+    if (result != NULL) {
+        printf("'%c' found at position %ld in the string: %s\n", ch, result - str, str);
+    } else {
+        printf("'%c' not found in the string: %s\n", ch, str);
+    }
+
+    return 0;
+}
+```
+
+In this example, strchr() is used to search for the character 'o' in the string "Hello, World!". If the character is found, it prints its position in the string; otherwise, it indicates that the character was not found.
+
+Note that the result of strchr() is a pointer to the found character or NULL if the character is not present. The position of the character in the string can be calculated by subtracting the base address of the string (str) from the result.
+
