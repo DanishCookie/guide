@@ -23,10 +23,6 @@ A variable can be of the following types:
 5. Auto Variable
 6. Register Variable
 
-```c
-  Note: There are a few rules which we have to follow while naming a variable.
-```
-
 ### Data Types
 
 The data type is the type of data that a given variable can store. Different data types have different sizes. There are 3 types of data types in C:
@@ -1458,3 +1454,11 @@ int main() {
 In this example, a binary tree is created with nodes having integer data. The createNode function is used to allocate memory for a new node and initialize its data and pointers. The printInOrder function performs an in-order traversal of the binary tree, printing the elements in ascending order.
 
 For a more complex example, you might want to implement additional functionalities like inserting nodes, deleting nodes, or balancing the tree. The complexity of the implementation would depend on the specific requirements and operations you need for your binary tree.
+
+### Terminology
+if/switch(multivejsudvegelse) - selektiv kontrolstruktur
+while/for - iterativ kontrolstruktur
+
+test[i] - subscription
+wd = i; - implicit type conversion
+we = (weekday)j; - explicit type conversion (typecast)
