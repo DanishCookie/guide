@@ -1157,3 +1157,29 @@ In this example, strchr() is used to search for the character 'o' in the string 
 
 Note that the result of strchr() is a pointer to the found character or NULL if the character is not present. The position of the character in the string can be calculated by subtracting the base address of the string (str) from the result.
 
+### Struct Arrow Pointer
+
+Certainly! The arrow (->) operator in C is used with pointers to structures. It simplifies the process of accessing members of a structure through a pointer. Here's a simple explanation:
+
+```
+struct Point {
+    int x;
+    int y;
+};
+```
+
+Now, let's create a structure variable and a pointer to that structure:
+
+```
+struct Point myPoint = {3, 7};
+struct Point *ptrToPoint = &myPoint;
+```
+
+With the arrow operator, you can access structure members through the pointer like this:
+
+```
+int xValue = ptrToPoint->x;
+int yValue = ptrToPoint->y;
+```
+
+So, ptrToPoint->x is equivalent to (*ptrToPoint).x. It combines dereferencing the pointer and accessing the member in a more concise way. The arrow operator is a convenient shorthand for working with structures through pointers.
