@@ -1229,4 +1229,74 @@ In the main function, we create a struct Student variable student1, initialize i
 
 This example demonstrates how to use a pointer to a structure for accessing and modifying complex data types.
 
+### Enum Complex Example
 
+```
+#include <stdio.h>
+
+// Define an enumeration for days of the week
+enum Days {
+    SUNDAY,
+    MONDAY,
+    TUESDAY,
+    WEDNESDAY,
+    THURSDAY,
+    FRIDAY,
+    SATURDAY
+};
+
+// Define a structure for a schedule entry
+struct ScheduleEntry {
+    enum Days day;
+    char event[50];
+    int startTime;
+    int endTime;
+};
+
+// Function to display information about a schedule entry
+void displayScheduleEntry(struct ScheduleEntry entry) {
+    printf("Day: ");
+    switch (entry.day) {
+        case SUNDAY:
+            printf("Sunday");
+            break;
+        case MONDAY:
+            printf("Monday");
+            break;
+        case TUESDAY:
+            printf("Tuesday");
+            break;
+        case WEDNESDAY:
+            printf("Wednesday");
+            break;
+        case THURSDAY:
+            printf("Thursday");
+            break;
+        case FRIDAY:
+            printf("Friday");
+            break;
+        case SATURDAY:
+            printf("Saturday");
+            break;
+        default:
+            printf("Invalid day");
+            break;
+    }
+    printf("\nEvent: %s\n", entry.event);
+    printf("Time: %d:00 - %d:00\n", entry.startTime, entry.endTime);
+}
+
+int main() {
+    // Create a schedule entry for Wednesday
+    struct ScheduleEntry wednesdayEntry = {WEDNESDAY, "Meeting", 14, 16};
+
+    // Display information about the schedule entry
+    printf("Schedule Entry:\n");
+    displayScheduleEntry(wednesdayEntry);
+
+    return 0;
+}
+```
+In this example, we define an enumeration Days for the days of the week and a structure ScheduleEntry representing a schedule entry with the day, event, start time, and end time. The displayScheduleEntry function takes a ScheduleEntry structure as an argument and displays information about the schedule entry, including converting the day from the enumeration to a human-readable form.
+
+In the main function, we create a schedule entry for Wednesday and display its information using the displayScheduleEntry function. This example demonstrates the combination of enums and structures to represent and work with more complex data.
