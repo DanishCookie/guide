@@ -1300,3 +1300,161 @@ int main() {
 In this example, we define an enumeration Days for the days of the week and a structure ScheduleEntry representing a schedule entry with the day, event, start time, and end time. The displayScheduleEntry function takes a ScheduleEntry structure as an argument and displays information about the schedule entry, including converting the day from the enumeration to a human-readable form.
 
 In the main function, we create a schedule entry for Wednesday and display its information using the displayScheduleEntry function. This example demonstrates the combination of enums and structures to represent and work with more complex data.
+
+### Arrays as Lists in C:
+
+```
+#include <stdio.h>
+
+int main() {
+    // Declare an array to represent a list of integers
+    int myArray[5] = {1, 2, 3, 4, 5};
+
+    // Access and print elements of the list
+    for (int i = 0; i < 5; i++) {
+        printf("%d ", myArray[i]);
+    }
+
+    return 0;
+}
+```
+
+In this simple example, an array myArray is used to store a list of integers. The elements of the array represent individual elements in the list, and a loop is used to iterate through and print each element.
+
+```
+#include <stdio.h>
+
+#define MAX_SIZE 10
+
+int main() {
+    int myList[MAX_SIZE];
+    int size = 0;
+
+    // Function to add an element to the list
+    void addElement(int element) {
+        if (size < MAX_SIZE) {
+            myList[size] = element;
+            size++;
+        } else {
+            printf("List is full. Cannot add more elements.\n");
+        }
+    }
+
+    // Function to print the elements of the list
+    void printList() {
+        printf("List: ");
+        for (int i = 0; i < size; i++) {
+            printf("%d ", myList[i]);
+        }
+        printf("\n");
+    }
+
+    // Add elements to the list
+    addElement(10);
+    addElement(20);
+    addElement(30);
+
+    // Print the list
+    printList();
+
+    return 0;
+}
+```
+
+In this complex example, a list is represented using an array, and functions (addElement and printList) are used to manipulate and display the list. The list has a maximum size (MAX_SIZE), and the addElement function checks if the list is full before adding an element.
+
+### Linked Lists in C:
+Linked lists are more complex data structures where each element (node) contains a data part and a reference (link) to the next element in the sequence. Here's a simple example:
+```
+#include <stdio.h>
+#include <stdlib.h>
+
+// Define a structure for a node in the linked list
+struct Node {
+    int data;
+    struct Node* next;
+};
+
+int main() {
+    // Create three nodes
+    struct Node* head = NULL;
+    struct Node* second = NULL;
+    struct Node* third = NULL;
+
+    // Allocate memory for the nodes
+    head = (struct Node*)malloc(sizeof(struct Node));
+    second = (struct Node*)malloc(sizeof(struct Node));
+    third = (struct Node*)malloc(sizeof(struct Node));
+
+    // Assign data to each node and set the next pointer
+    head->data = 1;
+    head->next = second;
+
+    second->data = 2;
+    second->next = third;
+
+    third->data = 3;
+    third->next = NULL; // Mark the end of the list
+
+    // Print elements of the linked list
+    struct Node* current = head;
+    while (current != NULL) {
+        printf("%d ", current->data);
+        current = current->next;
+    }
+
+    return 0;
+}
+```
+In this example, a linked list is created using a structure (struct Node) to represent each element. The next pointer in each node points to the next element in the sequence. The elements are then printed by traversing the list using a loop.
+
+### Binary Trees
+In C, binary trees are implemented using structures to define the nodes and pointers to represent the connections between nodes. Here's a simple example of a binary tree:
+```
+#include <stdio.h>
+#include <stdlib.h>
+
+// Define a structure for a node in the binary tree
+struct TreeNode {
+    int data;
+    struct TreeNode* left;
+    struct TreeNode* right;
+};
+
+// Function to create a new node with given data
+struct TreeNode* createNode(int data) {
+    struct TreeNode* newNode = (struct TreeNode*)malloc(sizeof(struct TreeNode));
+    newNode->data = data;
+    newNode->left = NULL;
+    newNode->right = NULL;
+    return newNode;
+}
+
+int main() {
+    // Create a simple binary tree
+    struct TreeNode* root = createNode(1);
+    root->left = createNode(2);
+    root->right = createNode(3);
+    root->left->left = createNode(4);
+    root->left->right = createNode(5);
+
+    // Function to print the elements of the binary tree (in-order traversal)
+    void printInOrder(struct TreeNode* node) {
+        if (node != NULL) {
+            printInOrder(node->left);
+            printf("%d ", node->data);
+            printInOrder(node->right);
+        }
+    }
+
+    // Print elements of the binary tree
+    printf("Binary Tree (In-Order): ");
+    printInOrder(root);
+    printf("\n");
+
+    return 0;
+}
+```
+In this example, a binary tree is created with nodes having integer data. The createNode function is used to allocate memory for a new node and initialize its data and pointers. The printInOrder function performs an in-order traversal of the binary tree, printing the elements in ascending order.
+
+For a more complex example, you might want to implement additional functionalities like inserting nodes, deleting nodes, or balancing the tree. The complexity of the implementation would depend on the specific requirements and operations you need for your binary tree.
