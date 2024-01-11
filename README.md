@@ -1181,5 +1181,52 @@ With the arrow operator, you can access structure members through the pointer li
 int xValue = ptrToPoint->x;
 int yValue = ptrToPoint->y;
 ```
-
 So, ptrToPoint->x is equivalent to (*ptrToPoint).x. It combines dereferencing the pointer and accessing the member in a more concise way. The arrow operator is a convenient shorthand for working with structures through pointers.
+
+### More complex example now
+
+```
+#include <stdio.h>
+
+// Define a structure for representing a student
+struct Student {
+    int id;
+    char name[50];
+    float grade;
+};
+
+// Function to display information about a student using a pointer to the structure
+void displayStudentInfo(struct Student *ptrStudent) {
+    printf("Student ID: %d\n", ptrStudent->id);
+    printf("Name: %s\n", ptrStudent->name);
+    printf("Grade: %.2f\n", ptrStudent->grade);
+}
+
+int main() {
+    // Declare a structure variable and initialize it
+    struct Student student1 = {101, "John Doe", 85.5};
+
+    // Declare a pointer to a structure and assign the address of the structure variable
+    struct Student *ptrStudent1 = &student1;
+
+    // Display information about the student using the pointer
+    printf("Student information using pointer:\n");
+    displayStudentInfo(ptrStudent1);
+
+    // Modify student information using the pointer
+    ptrStudent1->grade = 90.0;
+
+    // Display modified information
+    printf("\nModified student information using pointer:\n");
+    displayStudentInfo(ptrStudent1);
+
+    return 0;
+}
+```
+In this example, we define a struct Student with members for student ID, name, and grade. The displayStudentInfo function takes a pointer to a struct Student as an argument and prints out information about the student using that pointer.
+
+In the main function, we create a struct Student variable student1, initialize it, and then declare a pointer ptrStudent1 pointing to student1. We display the student information using the pointer, modify the student's grade through the pointer, and display the modified information again.
+
+This example demonstrates how to use a pointer to a structure for accessing and modifying complex data types.
+
+
